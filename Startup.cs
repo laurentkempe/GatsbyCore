@@ -47,7 +47,6 @@ namespace GatsbyCore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
@@ -62,7 +61,7 @@ namespace GatsbyCore
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:8000/");
                 }
             });
         }
